@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ping</title>
+  </head>
+  <body>
+    <button onclick="sendMessage()">Send</button>
+  </body>
+
+  <script>
+    function sendMessage() {
+      const request = new XMLHttpRequest();
+      request.open("POST", "https://discord.com/api/webhooks/929398283003117599/nF4CwgJQOpfe4M-64tBN3bsSCw8BWYmYJ6ol0UGy_kvk-FfY-NstIJzMT8ezE_6MosFV");
+
+      request.setRequestHeader('Content-type', 'application/json');
+
+      const params = {
+        username: "Pinger",
+        avatar_url: "",
+        content: "Ping !<@&929397855960043571>"
+      }
+
+      request.send(JSON.stringify(params));
+    }
+  </script>
+</html>
